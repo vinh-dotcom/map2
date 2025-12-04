@@ -1,0 +1,57 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map App</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div id="auth-section" class="p-4">
+        <form id="signup-form" class="mb-4">
+            <input type="email" id="signup-email" placeholder="Email" class="border p-2 mr-2" required>
+            <input type="password" id="signup-password" placeholder="Password" class="border p-2 mr-2" required>
+            <button type="submit" class="bg-blue-500 text-white p-2">Sign Up</button>
+        </form>
+        <form id="login-form" class="mb-4">
+            <input type="email" id="login-email" placeholder="Email" class="border p-2 mr-2" required>
+            <input type="password" id="login-password" placeholder="Password" class="border p-2 mr-2" required>
+            <button type="submit" class="bg-green-500 text-white p-2">Login</button>
+        </form>
+        <button id="logout-btn" class="bg-red-500 text-white p-2 hidden">Logout</button>
+    </div>
+    <div id="map" class="h-96"></div>
+    <div id="marker-form" class="p-4 hidden">
+        <h2 class="text-xl mb-2">Add Marker</h2>
+        <input type="text" id="marker-name" placeholder="Name" class="border p-2 mb-2 block w-full" required>
+        <input type="text" id="marker-lat" placeholder="Lat" class="border p-2 mb-2 block w-full" readonly>
+        <input type="text" id="marker-lng" placeholder="Lng" class="border p-2 mb-2 block w-full" readonly>
+        <textarea id="marker-notes" placeholder="Notes" class="border p-2 mb-2 block w-full"></textarea>
+        <input type="file" id="marker-image" accept="image/*" class="mb-2">
+        <button id="add-marker-btn" class="bg-blue-500 text-white p-2">Add Marker</button>
+    </div>
+    <div id="marker-list" class="p-4">
+        <h2 class="text-xl mb-2">My Markers</h2>
+        <table class="w-full border-collapse border">
+            <thead>
+                <tr>
+                    <th class="border p-2">Name</th>
+                    <th class="border p-2">Lat</th>
+                    <th class="border p-2">Lng</th>
+                    <th class="border p-2">Created At</th>
+                    <th class="border p-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="marker-table-body"></tbody>
+        </table>
+    </div>
+    <script src="supabase.js"></script>
+    <script src="auth.js"></script>
+    <script src="upload.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
